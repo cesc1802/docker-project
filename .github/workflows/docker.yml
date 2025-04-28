@@ -1,0 +1,25 @@
+name: Docker Build & Push
+
+on:
+    push:
+        - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Login to Docker Hub
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+        - name: Build Docker Image
+          run: docker build -t thuocnv1802/02-multi-container-app:${{ github.sha }} .
+
+        - name: Push to Docker Hub
+          run: docker push thuocnv1802/02-multi-container-app:${{ github.sha }}
+
+
+
+                
