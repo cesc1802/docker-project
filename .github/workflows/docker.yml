@@ -19,11 +19,10 @@ jobs:
           run: cd 02-multi-container-app
 
         - name: Build Docker Image
-          run: docker build -t thuocnv1802/02-multi-container-app:${{ github.sha }} ./02-multi-container-app
+          run: docker build -t thuocnv1802/01-basic_web_app:${{ github.sha }} ./01-basic_web_app
 
         - name: Push to Docker Hub
-          run: docker push thuocnv1802/02-multi-container-app:${{ github.sha }}
-
+          run: docker push thuocnv1802/01-basic_web_app:${{ github.sha }}
 
 
                 
